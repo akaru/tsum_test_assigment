@@ -29,17 +29,17 @@ class DetailedCountryCoordinator: BaseCoordinator<Void> {
                          networkManager.getCountriesByCodesError.asObservable())
             .take(1)
             .subscribe(onNext: { (error) in
-            let vc = UIAlertController(title: "Error", message: "There was a trouble fetching country details. \(error.localizedDescription)", preferredStyle: .alert)
-            let alertAction = UIAlertAction(
-                title: "Ok",
-                style: .cancel,
-                handler: nil)
-            vc.addAction(alertAction)
-            viewController.present(vc, animated: true, completion: nil)
-        }).disposed(by: disposeBag)
+                let vc = UIAlertController(title: "Error", message: "There was a trouble fetching country details. \(error.localizedDescription)", preferredStyle: .alert)
+                let alertAction = UIAlertAction(
+                    title: "Ok",
+                    style: .cancel,
+                    handler: nil)
+                vc.addAction(alertAction)
+                viewController.present(vc, animated: true, completion: nil)
+            }).disposed(by: disposeBag)
         
         navViewController.pushViewController(viewController, animated: true)
-       
+        
         return Observable.never()
     }
 }

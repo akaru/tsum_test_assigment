@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class CountriesListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     private var refreshControl: UIRefreshControl!
     
@@ -31,9 +31,11 @@ class CountriesListViewController: UIViewController {
     
     func setupBindings() {
         let tableView: UITableView = self.tableView
-        viewModel?.countries.drive(tableView.rx.items(cellIdentifier:"CountryCell", cellType: SimpleCountryCell.self)) { row, country, cell in
-            cell.viewModel = SimpleCountryCellViewModel(country: country)
-        }.disposed(by: disposeBag)
+        viewModel?
+            .countries
+            .drive(tableView.rx.items(cellIdentifier:"CountryCell", cellType: SimpleCountryCell.self)) { row, country, cell in
+                cell.viewModel = SimpleCountryCellViewModel(country: country)
+            }.disposed(by: disposeBag)
         
         tableView.rx.modelSelected(SimpleCountry.self).asObservable().bind(to: viewModel.showCountry).disposed(by: disposeBag)
         
@@ -57,5 +59,5 @@ class CountriesListViewController: UIViewController {
     @objc private func refresh() {
         viewModel.refresh()
     }
-
+    
 }

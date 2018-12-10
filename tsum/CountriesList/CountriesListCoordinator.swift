@@ -28,7 +28,7 @@ class CountriesListCoordinator: BaseCoordinator<Void> {
         viewModel.showCountry.flatMap { [weak self] (country) -> Observable<Void> in
             guard let `self` = self else { return .empty() }
             return self.showCountry(country)
-        }.subscribe()
+            }.subscribe()
             .disposed(by: disposeBag)
         
         viewController.viewModel = viewModel

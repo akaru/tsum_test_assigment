@@ -41,9 +41,9 @@ extension RestCountries: TargetType {
         case .all, .getCountry:
             return .requestPlain
         case .getCountriesByCodes(let codes):
-             var params: [String: Any] = [:]
-             params["codes"] = codes.joined(separator: ";")
-             return .requestParameters(
+            var params: [String: Any] = [:]
+            params["codes"] = codes.joined(separator: ";")
+            return .requestParameters(
                 parameters: params,
                 encoding: URLEncoding.default)
         }

@@ -36,8 +36,8 @@ class DetailedCountryViewModel {
                          self.service.getCountriesByCodesError.asObservable())
             .take(1)
             .subscribe(onNext: { [refreshProperty] _ in
-                 refreshProperty.onNext(false)
-        }).disposed(by: disposeBag)
+                refreshProperty.onNext(false)
+            }).disposed(by: disposeBag)
         
         let getCountry =  isRefreshing
             .flatMapLatest { isRefreshing -> Observable<DetailedCountry?> in
@@ -52,7 +52,7 @@ class DetailedCountryViewModel {
                     return service.getCountriesByCodes(country.borderedCountriesCodes)
                 }
                 return .just([])
-            }
+        }
         
         Observable.combineLatest(getCountry, getBorderedCountries).map { (arg0) -> DetailedCountry? in
             
@@ -61,7 +61,7 @@ class DetailedCountryViewModel {
             for borderCountry in borders {
                 countrieNames.append(borderCountry.name)
             }
-           
+            
             country?.borderedCountriesNames = countrieNames
             return country
             }.do(onNext: {[refreshProperty] _ in
