@@ -25,19 +25,34 @@ class DetailedCountryViewModel {
     let borederedCountriesDriver: Driver<String>
     private let currenciesSubject = BehaviorSubject(value: "")
     let currenciesDriver: Driver<String>
+    var isRefreshing: Observable<Bool>!
+    private let refreshProperty = BehaviorSubject<Bool>(value: true)
     
     init(service: NetworkManager, countryName: String) {
         self.service = service
-        let getCountry = service.getDetailedCountry(name: countryName)
-            .share(replay: 1)
+        isRefreshing = refreshProperty.asObservable()
         
+        Observable.merge(self.service.getCountryDetailsError.asObservable(),
+                         self.service.getCountriesByCodesError.asObservable())
+            .take(1)
+            .subscribe(onNext: { [refreshProperty] _ in
+                 refreshProperty.onNext(false)
+        }).disposed(by: disposeBag)
         
-        let getBorderedCountries = getCountry.flatMap{Observable.from(optional: $0)}.flatMap { [service] country -> Observable<[SimpleCountry]> in
-            if country.borderedCountriesCodes.count > 0 {
-                return service.getCountriesByCodes(country.borderedCountriesCodes)
+        let getCountry =  isRefreshing
+            .flatMapLatest { isRefreshing -> Observable<DetailedCountry?> in
+                guard isRefreshing else { return .empty() }
+                return service.getDetailedCountry(name: countryName)
+            }.share(replay: 1)
+        
+        let getBorderedCountries = getCountry
+            .flatMap{Observable.from(optional: $0)}
+            .flatMap { [service] country -> Observable<[SimpleCountry]> in
+                if country.borderedCountriesCodes.count > 0 {
+                    return service.getCountriesByCodes(country.borderedCountriesCodes)
+                }
+                return .just([])
             }
-            return .just([])
-        }
         
         Observable.combineLatest(getCountry, getBorderedCountries).map { (arg0) -> DetailedCountry? in
             
@@ -49,7 +64,9 @@ class DetailedCountryViewModel {
            
             country?.borderedCountriesNames = countrieNames
             return country
-        }.bind(to: country).disposed(by: disposeBag)
+            }.do(onNext: {[refreshProperty] _ in
+                refreshProperty.onNext(false)
+            }).bind(to: country).disposed(by: disposeBag)
         
         
         countryNameSubject = BehaviorSubject(value: countryName)

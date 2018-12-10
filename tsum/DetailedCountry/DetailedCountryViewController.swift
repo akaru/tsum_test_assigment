@@ -18,6 +18,7 @@ class DetailedCountryViewController: UIViewController {
     @IBOutlet weak var borederedCountriesLabel: UILabel!
     @IBOutlet weak var currenciesLabel: UILabel!
     
+    @IBOutlet weak var loadingIndicatorView: UIView!
     
     var viewModel: DetailedCountryViewModel!
     private let disposeBag = DisposeBag()
@@ -35,6 +36,7 @@ class DetailedCountryViewController: UIViewController {
         viewModel.populationDriver.drive(populationLabel.rx.text).disposed(by: disposeBag)
         viewModel.borederedCountriesDriver.drive(borederedCountriesLabel.rx.text).disposed(by: disposeBag)
         viewModel.currenciesDriver.drive(currenciesLabel.rx.text).disposed(by: disposeBag)
+        viewModel.isRefreshing.map{!$0}.bind(to: loadingIndicatorView.rx.isHidden).disposed(by: disposeBag)
     }
 
 }
