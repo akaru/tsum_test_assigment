@@ -40,6 +40,5 @@ class CountriesListCoordinator: BaseCoordinator<Void> {
     func showCountry(_ country: SimpleCountry) -> Observable<Void> {
         let detailedCountryCoordinator = DetailedCountryCoordinator(navViewController: self.navViewController!, networkManager: networkManager, countryName: country.name)
         return coordinate(to: detailedCountryCoordinator)
-//        detailedCountryCoordinator.start().subscribe().disposed(by: disposeBag)
     }
 }

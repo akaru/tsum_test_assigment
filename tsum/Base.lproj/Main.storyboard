@@ -101,22 +101,55 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capital: Washington" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixk-ue-0Rg">
-                                <rect key="frame" x="32" y="100" width="153" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hqj-fu-Agl">
+                                <rect key="frame" x="15" y="89" width="345" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capital: Washington" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixk-ue-0Rg">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.25271489685528897" alpha="0.84705882352941175" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Population: 1000000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbN-pk-bqx">
+                                        <rect key="frame" x="0.0" y="30" width="345" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.25271489689999999" alpha="0.84705882349999995" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boredered countries: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXj-SC-Xlw">
+                                        <rect key="frame" x="0.0" y="60" width="345" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.25271489689999999" alpha="0.84705882349999995" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currencies:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zy9-qb-8ea">
+                                        <rect key="frame" x="0.0" y="90" width="345" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.25271489689999999" alpha="0.84705882349999995" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xFh-7V-Ef8" firstAttribute="leading" secondItem="Mop-7R-1eI" secondAttribute="leading" constant="15" id="4Jn-6y-9yT"/>
+                            <constraint firstItem="Hqj-fu-Agl" firstAttribute="top" secondItem="xFh-7V-Ef8" secondAttribute="bottom" constant="25" id="4eV-o5-HcF"/>
+                            <constraint firstItem="Hqj-fu-Agl" firstAttribute="leading" secondItem="Mop-7R-1eI" secondAttribute="leading" constant="15" id="Jl5-kT-uIX"/>
                             <constraint firstItem="xFh-7V-Ef8" firstAttribute="top" secondItem="Mop-7R-1eI" secondAttribute="top" constant="20" id="X2f-Fh-H0G"/>
                             <constraint firstItem="Mop-7R-1eI" firstAttribute="trailing" secondItem="xFh-7V-Ef8" secondAttribute="trailing" constant="15" id="Z45-eh-z1X"/>
+                            <constraint firstItem="Mop-7R-1eI" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Hqj-fu-Agl" secondAttribute="bottom" id="iGh-Tk-6Po"/>
+                            <constraint firstItem="Mop-7R-1eI" firstAttribute="trailing" secondItem="Hqj-fu-Agl" secondAttribute="trailing" constant="15" id="que-kM-1B6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mop-7R-1eI"/>
                     </view>
+                    <connections>
+                        <outlet property="borederedCountriesLabel" destination="ZXj-SC-Xlw" id="HBk-v4-HCR"/>
+                        <outlet property="capitalLabel" destination="Ixk-ue-0Rg" id="woL-wC-7xn"/>
+                        <outlet property="countryNameLabel" destination="xFh-7V-Ef8" id="Wix-nZ-WGf"/>
+                        <outlet property="currenciesLabel" destination="Zy9-qb-8ea" id="YBr-6x-aS3"/>
+                        <outlet property="populationLabel" destination="pbN-pk-bqx" id="wrS-Bf-uvB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPJ-Yi-GTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

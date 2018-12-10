@@ -12,28 +12,29 @@ import RxCocoa
 
 class DetailedCountryViewController: UIViewController {
     
+    @IBOutlet weak var countryNameLabel: UILabel!
+    @IBOutlet weak var capitalLabel: UILabel!
+    @IBOutlet weak var populationLabel: UILabel!
+    @IBOutlet weak var borederedCountriesLabel: UILabel!
+    @IBOutlet weak var currenciesLabel: UILabel!
     
     
     var viewModel: DetailedCountryViewModel!
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Country details"
         setupBindings()
         // Do any additional setup after loading the view.
     }
     
     func setupBindings() {
-
+        viewModel.countryNameDriver.drive(countryNameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.capitalDriver.drive(capitalLabel.rx.text).disposed(by: disposeBag)
+        viewModel.populationDriver.drive(populationLabel.rx.text).disposed(by: disposeBag)
+        viewModel.borederedCountriesDriver.drive(borederedCountriesLabel.rx.text).disposed(by: disposeBag)
+        viewModel.currenciesDriver.drive(currenciesLabel.rx.text).disposed(by: disposeBag)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

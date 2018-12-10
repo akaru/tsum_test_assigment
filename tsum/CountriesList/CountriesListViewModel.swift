@@ -30,7 +30,7 @@ class CountriesListViewModel {
                 return .empty()
         }
         
-        countries = loadCountries.share(replay: 1).do(onNext: { [refreshProperty] (_) in
+        countries = loadCountries.share(replay: 1).do(onNext: { [refreshProperty] (countries) in
             refreshProperty.onNext(false)
         }).asDriver(onErrorJustReturn:[])
         

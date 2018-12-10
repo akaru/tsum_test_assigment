@@ -23,19 +23,12 @@ class SimpleCountryCell: UITableViewCell {
     }
     
     func setupBindings() {
-        viewModel.countryName.drive(countryNameLabel.rx.text).disposed(by: disposeBag)
-        viewModel.countryPopulation.drive(countryPopulationLabel.rx.text).disposed(by: disposeBag)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        viewModel.countryName
+            .drive(countryNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.countryPopulation
+            .drive(countryPopulationLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     override func prepareForReuse() {

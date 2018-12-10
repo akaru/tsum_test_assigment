@@ -19,12 +19,14 @@ class SimpleCountryCellViewModel {
     
     init(country: SimpleCountry) {
         self.country = BehaviorSubject(value: country)
-        self.countryName = self.country.map { country in
-            country.name
-        }.asDriver(onErrorJustReturn: "")
+        self.countryName = self.country
+            .map { country in
+                country.name
+            }.asDriver(onErrorJustReturn: "")
         
-        self.countryPopulation = self.country.map { country in
-            "Population: \(country.population)"
+        self.countryPopulation = self.country
+            .map { country in
+                "Population: \(country.population)"
             }.asDriver(onErrorJustReturn: "Population: unknown")
         
     }
