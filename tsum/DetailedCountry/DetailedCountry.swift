@@ -14,6 +14,7 @@ struct DetailedCountry: Codable {
     let population: Int
     let borderedCountriesCodes: [String]
     let currencies: [Currency]
+    var borderedCountriesNames: [String]?
     
      enum CodingKeys: String, CodingKey {
         case name

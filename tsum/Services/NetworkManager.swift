@@ -28,4 +28,12 @@ class NetworkManager {
             }
             .asObservable()
     }
+    
+    func getCountriesByCodes(_ codes: [String]) -> Observable<[SimpleCountry]> {
+        return provider.rx
+            .request(.getCountriesByCodes(codes: codes))
+            .map([SimpleCountry].self)
+            .catchErrorJustReturn([])
+            .asObservable()
+    }
 }

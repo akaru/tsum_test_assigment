@@ -11,4 +11,5 @@ import Foundation
 enum RestCountries {
     case all
     case getCountry(name: String)
+    case getCountriesByCodes(codes: [String])
 }

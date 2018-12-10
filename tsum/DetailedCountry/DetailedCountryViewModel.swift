@@ -29,14 +29,33 @@ class DetailedCountryViewModel {
     init(service: NetworkManager, countryName: String) {
         self.service = service
         let getCountry = service.getDetailedCountry(name: countryName)
-            .share(replay: 1)
-        getCountry.bind(to: country).disposed(by: disposeBag)
+            .share(replay: 1).do( onError: { (error) in
+                print(error.localizedDescription)
+            })
+        
+        
+        let getBorderedCountries = getCountry.flatMap{Observable.from(optional: $0)}.flatMap { [service] in
+            service.getCountriesByCodes($0.borderedCountriesCodes)
+        }
+        
+        Observable.combineLatest(getCountry, getBorderedCountries).map { (arg0) -> DetailedCountry? in
+            
+            var (country, borders) = arg0
+            var countrieNames = [String]()
+            for borderCountry in borders {
+                countrieNames.append(borderCountry.name)
+            }
+           
+            country?.borderedCountriesNames = countrieNames
+            return country
+        }.bind(to: country).disposed(by: disposeBag)
+        
         
         countryNameSubject = BehaviorSubject(value: countryName)
         country.flatMap{Observable.from(optional: $0)}.map { (country) in
-            country.capital
+            country.name
             }.bind(to: self.countryNameSubject).disposed(by: disposeBag)
-        countryNameDriver = countryNameSubject.asDriver(onErrorJustReturn: "")
+        countryNameDriver = countryNameSubject.asDriver(onErrorJustReturn: countryName)
         
         country.flatMap{Observable.from(optional: $0)}.map { (country) in
             let capitalName = country.capital.isEmpty ? "unknown" : country.capital
@@ -51,10 +70,13 @@ class DetailedCountryViewModel {
         
         country.flatMap{Observable.from(optional: $0)}.map { (country) -> String in
             var countries = [String]()
-            for countryCode in country.borderedCountriesCodes {
-                countries.append(countryCode)
+            if let borderedCountriesNames = country.borderedCountriesNames {
+                for countryName in borderedCountriesNames {
+                    countries.append(countryName)
+                }
             }
-            return "Bordered countries: \(countries.joined(separator: ", "))"
+            let result = countries.count > 0 ? countries.joined(separator: ", ") : "none"
+            return "Bordered countries: \(result)"
             }.bind(to: borderedCountriesSubject).disposed(by: disposeBag)
         borederedCountriesDriver = borderedCountriesSubject.asDriver(onErrorJustReturn: "Bordered countries: none")
         

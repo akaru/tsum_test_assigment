@@ -26,7 +26,6 @@
 		B9747F2D21BE10510057BBC8 /* SimpleCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9747F2C21BE10510057BBC8 /* SimpleCountryCell.swift */; };
 		B9747F2F21BE13300057BBC8 /* SimpleCountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9747F2E21BE13300057BBC8 /* SimpleCountryCellViewModel.swift */; };
 		B97CCB7121BC25D50085A2E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97CCB7021BC25D50085A2E5 /* AppDelegate.swift */; };
-		B97CCB7321BC25D50085A2E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97CCB7221BC25D50085A2E5 /* ViewController.swift */; };
 		B97CCB7621BC25D50085A2E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97CCB7421BC25D50085A2E5 /* Main.storyboard */; };
 		B97CCB7821BC25D50085A2E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97CCB7721BC25D50085A2E5 /* Assets.xcassets */; };
 		B97CCB7B21BC25D50085A2E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97CCB7921BC25D50085A2E5 /* LaunchScreen.storyboard */; };
@@ -56,7 +55,6 @@
 		B9747F2E21BE13300057BBC8 /* SimpleCountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCountryCellViewModel.swift; sourceTree = "<group>"; };
 		B97CCB6D21BC25D50085A2E5 /* tsum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tsum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B97CCB7021BC25D50085A2E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B97CCB7221BC25D50085A2E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B97CCB7521BC25D50085A2E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B97CCB7721BC25D50085A2E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97CCB7A21BC25D50085A2E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				B9747F0221BDADAC0057BBC8 /* Services */,
 				B97CCB8321BC271A0085A2E5 /* Common */,
 				B97CCB8221BC26AA0085A2E5 /* SupportFiles */,
-				B97CCB7221BC25D50085A2E5 /* ViewController.swift */,
 				B97CCB7421BC25D50085A2E5 /* Main.storyboard */,
 			);
 			path = tsum;
@@ -332,7 +329,6 @@
 				B9747F1D21BDF8530057BBC8 /* RestCountries.swift in Sources */,
 				B9747F0421BDADBB0057BBC8 /* NetworkManager.swift in Sources */,
 				B9747F0D21BDB4510057BBC8 /* AppStoryboard.swift in Sources */,
-				B97CCB7321BC25D50085A2E5 /* ViewController.swift in Sources */,
 				B9747F0721BDB0940057BBC8 /* AppCoordinator.swift in Sources */,
 				B9747F2F21BE13300057BBC8 /* SimpleCountryCellViewModel.swift in Sources */,
 				B9747F2821BE05DD0057BBC8 /* DetailedCountry.swift in Sources */,
