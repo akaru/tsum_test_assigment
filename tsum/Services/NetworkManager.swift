@@ -20,7 +20,12 @@ class NetworkManager {
             .asObservable()
     }
     
-    func getDetailedCountry() {
-        
+    func getDetailedCountry(name: String) -> Observable<DetailedCountry?> {
+        return provider.rx
+        .request(.getCountry(name: name))
+            .map([DetailedCountry].self).map{ array in
+                array.first
+            }
+            .asObservable()
     }
 }

@@ -13,6 +13,7 @@ import RxSwift
 class CountriesListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
     
     var viewModel: CountriesListViewModel!
     let disposeBag = DisposeBag()
@@ -24,15 +25,37 @@ class CountriesListViewController: UIViewController {
     }
     
     func setupViews() {
-//        self.tableView.delegate = nil
-//        self.tableView.dataSource = nil
+        self.title = "Countries"
+        configureRefreshControl()
     }
     
     func setupBindings() {
         let tableView: UITableView = self.tableView
-        viewModel?.countries.drive(tableView.rx.items(cellIdentifier:"CountryCell", cellType: UITableViewCell.self)) { row, country, cell in
-            cell.textLabel?.text = "\(country.name) \(country.population)"
+        viewModel?.countries.drive(tableView.rx.items(cellIdentifier:"CountryCell", cellType: SimpleCountryCell.self)) { row, country, cell in
+            cell.viewModel = SimpleCountryCellViewModel(country: country)
         }.disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(SimpleCountry.self).asObservable().bind(to: viewModel.showCountry).disposed(by: disposeBag)
+        
+        viewModel.isRefreshing
+            .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
+    }
+    
+    private func configureRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc private func refresh() {
+        viewModel.refresh()
     }
 
 }

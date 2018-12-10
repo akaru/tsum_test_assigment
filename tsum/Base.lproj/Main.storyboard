@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a8U-b0-wk2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,21 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="tsum" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-15" y="34"/>
-        </scene>
         <!--Countries List View Controller-->
         <scene sceneID="L7d-1W-9k8">
             <objects>
@@ -33,17 +18,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GFl-kJ-0MK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GFl-kJ-0MK">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CountryCell" id="eE6-YY-LAz">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CountryCell" rowHeight="82" id="eE6-YY-LAz" customClass="SimpleCountryCell" customModule="tsum" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eE6-YY-LAz" id="mAv-XF-TzD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="United States" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-eS-uOW">
+                                                    <rect key="frame" x="15" y="10" width="345" height="24"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Population: 100000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kY3-UZ-ZSJ">
+                                                    <rect key="frame" x="15" y="51" width="345" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxd-jc-xgK">
+                                                    <rect key="frame" x="0.0" y="81" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="gRm-zE-nyu"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="dc1-eS-uOW" secondAttribute="trailing" constant="15" id="3xj-Fn-NIh"/>
+                                                <constraint firstItem="dc1-eS-uOW" firstAttribute="top" secondItem="mAv-XF-TzD" secondAttribute="top" constant="10" id="439-iX-cCw"/>
+                                                <constraint firstItem="fxd-jc-xgK" firstAttribute="leading" secondItem="mAv-XF-TzD" secondAttribute="leading" id="Te9-fD-S9N"/>
+                                                <constraint firstItem="kY3-UZ-ZSJ" firstAttribute="leading" secondItem="mAv-XF-TzD" secondAttribute="leading" constant="15" id="V5O-O2-nKh"/>
+                                                <constraint firstItem="dc1-eS-uOW" firstAttribute="leading" secondItem="mAv-XF-TzD" secondAttribute="leading" constant="15" id="VI1-i5-B20"/>
+                                                <constraint firstItem="kY3-UZ-ZSJ" firstAttribute="top" secondItem="dc1-eS-uOW" secondAttribute="bottom" constant="17" id="WEc-jD-t5I"/>
+                                                <constraint firstAttribute="trailing" secondItem="fxd-jc-xgK" secondAttribute="trailing" id="Xwz-9h-xOR"/>
+                                                <constraint firstAttribute="trailing" secondItem="kY3-UZ-ZSJ" secondAttribute="trailing" constant="15" id="dD0-fO-HVN"/>
+                                                <constraint firstAttribute="bottom" secondItem="fxd-jc-xgK" secondAttribute="bottom" id="lLW-z0-EoR"/>
+                                                <constraint firstItem="fxd-jc-xgK" firstAttribute="top" secondItem="kY3-UZ-ZSJ" secondAttribute="bottom" constant="10" id="sub-Tm-vY0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countryNameLabel" destination="dc1-eS-uOW" id="ECo-Yk-OHM"/>
+                                            <outlet property="countryPopulationLabel" destination="kY3-UZ-ZSJ" id="RZ8-so-THp"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -63,7 +85,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fx-O5-Jg6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="870" y="30"/>
+            <point key="canvasLocation" x="-498.39999999999998" y="21.139430284857571"/>
+        </scene>
+        <!--Detailed Country View Controller-->
+        <scene sceneID="lJy-Bp-vZQ">
+            <objects>
+                <viewController storyboardIdentifier="DetailedCountryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IVj-Wo-oIk" customClass="DetailedCountryViewController" customModule="tsum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5mN-sw-hAB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFh-7V-Ef8">
+                                <rect key="frame" x="15" y="40" width="345" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capital: Washington" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixk-ue-0Rg">
+                                <rect key="frame" x="32" y="100" width="153" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xFh-7V-Ef8" firstAttribute="leading" secondItem="Mop-7R-1eI" secondAttribute="leading" constant="15" id="4Jn-6y-9yT"/>
+                            <constraint firstItem="xFh-7V-Ef8" firstAttribute="top" secondItem="Mop-7R-1eI" secondAttribute="top" constant="20" id="X2f-Fh-H0G"/>
+                            <constraint firstItem="Mop-7R-1eI" firstAttribute="trailing" secondItem="xFh-7V-Ef8" secondAttribute="trailing" constant="15" id="Z45-eh-z1X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mop-7R-1eI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPJ-Yi-GTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="21"/>
         </scene>
     </scenes>
 </document>
