@@ -11,11 +11,11 @@ import RxSwift
 import RxCocoa
 
 class SimpleCountryCellViewModel {
-    let country: BehaviorSubject<SimpleCountry>
+    private let country: BehaviorSubject<SimpleCountry>
     
     let countryName: Driver<String>
     let countryPopulation: Driver<String>
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     init(country: SimpleCountry) {
         self.country = BehaviorSubject(value: country)

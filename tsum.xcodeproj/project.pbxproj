@@ -25,6 +25,7 @@
 		B9747F2A21BE06E70057BBC8 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9747F2921BE06E70057BBC8 /* Currency.swift */; };
 		B9747F2D21BE10510057BBC8 /* SimpleCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9747F2C21BE10510057BBC8 /* SimpleCountryCell.swift */; };
 		B9747F2F21BE13300057BBC8 /* SimpleCountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9747F2E21BE13300057BBC8 /* SimpleCountryCellViewModel.swift */; };
+		B9747F3121BE55690057BBC8 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9747F3021BE55690057BBC8 /* RequestResult.swift */; };
 		B97CCB7121BC25D50085A2E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97CCB7021BC25D50085A2E5 /* AppDelegate.swift */; };
 		B97CCB7621BC25D50085A2E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97CCB7421BC25D50085A2E5 /* Main.storyboard */; };
 		B97CCB7821BC25D50085A2E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97CCB7721BC25D50085A2E5 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		B9747F2921BE06E70057BBC8 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		B9747F2C21BE10510057BBC8 /* SimpleCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCountryCell.swift; sourceTree = "<group>"; };
 		B9747F2E21BE13300057BBC8 /* SimpleCountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCountryCellViewModel.swift; sourceTree = "<group>"; };
+		B9747F3021BE55690057BBC8 /* RequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		B97CCB6D21BC25D50085A2E5 /* tsum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tsum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B97CCB7021BC25D50085A2E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B97CCB7521BC25D50085A2E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				B9747F0E21BDB4640057BBC8 /* Extensions */,
 				B97CCB8421BC272C0085A2E5 /* BaseCoordinator.swift */,
+				B9747F3021BE55690057BBC8 /* RequestResult.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				B9747F2621BDFCBD0057BBC8 /* DetailedCountryViewModel.swift in Sources */,
 				B9747F1B21BDE2C80057BBC8 /* SimpleCountry.swift in Sources */,
 				B9747F1F21BDF8760057BBC8 /* RestCountriesTargetType.swift in Sources */,
+				B9747F3121BE55690057BBC8 /* RequestResult.swift in Sources */,
 				B9747F1421BDBAF00057BBC8 /* CountriesListViewController.swift in Sources */,
 				B9747F1621BDBB940057BBC8 /* CountriesListViewModel.swift in Sources */,
 				B9747F1021BDB4750057BBC8 /* UIViewController+Extensions.swift in Sources */,

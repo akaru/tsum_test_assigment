@@ -17,25 +17,26 @@ class DetailedCountryViewModel {
     
     private let countryNameSubject: BehaviorSubject<String>
     let countryNameDriver: Driver<String>
-    private let capitalSubject = BehaviorSubject(value: "Capital:")
+    private let capitalSubject = BehaviorSubject(value: "")
     let capitalDriver: Driver<String>
-    private let populationSubject = BehaviorSubject(value: "Population:")
+    private let populationSubject = BehaviorSubject(value: "")
     let populationDriver: Driver<String>
-    private let borderedCountriesSubject = BehaviorSubject(value: "Bordered countries:")
+    private let borderedCountriesSubject = BehaviorSubject(value: "")
     let borederedCountriesDriver: Driver<String>
-    private let currenciesSubject = BehaviorSubject(value: "Currencies:")
+    private let currenciesSubject = BehaviorSubject(value: "")
     let currenciesDriver: Driver<String>
     
     init(service: NetworkManager, countryName: String) {
         self.service = service
         let getCountry = service.getDetailedCountry(name: countryName)
-            .share(replay: 1).do( onError: { (error) in
-                print(error.localizedDescription)
-            })
+            .share(replay: 1)
         
         
-        let getBorderedCountries = getCountry.flatMap{Observable.from(optional: $0)}.flatMap { [service] in
-            service.getCountriesByCodes($0.borderedCountriesCodes)
+        let getBorderedCountries = getCountry.flatMap{Observable.from(optional: $0)}.flatMap { [service] country -> Observable<[SimpleCountry]> in
+            if country.borderedCountriesCodes.count > 0 {
+                return service.getCountriesByCodes(country.borderedCountriesCodes)
+            }
+            return .just([])
         }
         
         Observable.combineLatest(getCountry, getBorderedCountries).map { (arg0) -> DetailedCountry? in

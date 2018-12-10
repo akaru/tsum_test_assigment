@@ -14,7 +14,7 @@ class SimpleCountryCell: UITableViewCell {
     @IBOutlet weak var countryNameLabel: UILabel!
     @IBOutlet weak var countryPopulationLabel: UILabel!
     
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     var viewModel: SimpleCountryCellViewModel! {
         didSet {

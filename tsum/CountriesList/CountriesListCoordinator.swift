@@ -18,6 +18,7 @@ class CountriesListCoordinator: BaseCoordinator<Void> {
     init(window: UIWindow) {
         self.window = window
         self.networkManager = NetworkManager()
+        
     }
     
     override func start() -> Observable<Void> {
@@ -27,9 +28,21 @@ class CountriesListCoordinator: BaseCoordinator<Void> {
         viewModel.showCountry.flatMap { [weak self] (country) -> Observable<Void> in
             guard let `self` = self else { return .empty() }
             return self.showCountry(country)
-        }.subscribe().disposed(by: disposeBag)
+        }.subscribe()
+            .disposed(by: disposeBag)
         
         viewController.viewModel = viewModel
+        
+        //Мне не очень нравится, как я сделал обработку ошибок, в идеале нужно сделать поэлегантнее и пореактивнее. Возможно зареактивить алерт контроллер и добавить ему свою вьюмодель
+        self.networkManager.getCountriesError.subscribe(onNext: { (error) in
+            let vc = UIAlertController(title: "Error", message: "There was a trouble fetching countries list. \(error.localizedDescription)", preferredStyle: .alert)
+            let alertAction = UIAlertAction(
+                title: "Ok",
+                style: .cancel,
+                handler: nil)
+            vc.addAction(alertAction)
+            viewController.present(vc, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
         
         self.navViewController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navViewController
@@ -41,4 +54,5 @@ class CountriesListCoordinator: BaseCoordinator<Void> {
         let detailedCountryCoordinator = DetailedCountryCoordinator(navViewController: self.navViewController!, networkManager: networkManager, countryName: country.name)
         return coordinate(to: detailedCountryCoordinator)
     }
+    
 }

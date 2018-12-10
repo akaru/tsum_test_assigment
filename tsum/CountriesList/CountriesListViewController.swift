@@ -13,10 +13,10 @@ import RxSwift
 class CountriesListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var refreshControl: UIRefreshControl!
+    private var refreshControl: UIRefreshControl!
     
     var viewModel: CountriesListViewModel!
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
